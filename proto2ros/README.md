@@ -711,7 +711,7 @@ ament_export_targets(${PROJECT_NAME})
 
 ament_package()
 ```
-__NOTE__: proto3 optional fields require the `--experimental_allow_proto3_optional` flag for protobuf versions 3.12-3.14. `proto2ros_generate()` handles this automatically. However, if you use `protobuf_generate()` directly in your own code, note that it does not support passing this flag in CMake < 3.28. See [`proto2ros_tests`](https://github.com/bdaiinstitute/proto2ros/tree/main/proto2ros_tests) for an example of calling `protoc` directly as a workaround.
+__NOTE__: proto3 optional fields require the `--experimental_allow_proto3_optional` flag for protobuf versions 3.12-3.14. `proto2ros_generate()` handles this automatically. However, if you use `protobuf_generate()` directly in your own code, note that it does not support passing this flag in CMake < 3.28. See [`proto2ros_tests`](https://github.com/rai-opensource/proto2ros/tree/main/proto2ros_tests) for an example of calling `protoc` directly as a workaround.
 
 ### ROS 2 vendored Protobuf messages
 
@@ -748,4 +748,4 @@ proto2ros_vendor_package(${PROJECT_NAME}
 ament_package()
 ```
 
-[`bosdyn_msgs`](https://github.com/bdaiinstitute/bosdyn_msgs) is a good example of this.
+[`bosdyn_msgs`](https://github.com/rai-opensource/bosdyn_msgs) is a good example of this.
