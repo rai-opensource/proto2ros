@@ -16,10 +16,6 @@ This repository contains the following packages:
 | [`proto2ros`](proto2ros)              | Machinery for ROS 2 equivalent message generation and conversion code generation.  |
 | [`proto2ros_tests`](proto2ros_tests)  | End-to-end tests for `proto2ros` generated messages and message conversion APIs.   |
 
-## Next steps
-
-See [contribution guidelines](CONTRIBUTING.md)!
-
 ## Migration Notice
 
 On April 28, 2026 this repository moved to the **RAI-Opensource** GitHub organization.  If you are still pulling from the previous bdaiinstitute GitHub organization, please update your git remote:
@@ -28,3 +24,8 @@ On April 28, 2026 this repository moved to the **RAI-Opensource** GitHub organiz
    ```
 
 If you maintain downstream docs/scripts, update links from this repository to the new org.
+
+
+## Next steps
+
+See [contribution guidelines](CONTRIBUTING.md)!
