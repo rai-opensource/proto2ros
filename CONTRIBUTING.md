@@ -23,11 +23,11 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 ## I Have a Question
 
-Before you ask a question, it is best to search for existing [issues](https://github.com/bdaiinstitute/proto2ros/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
+Before you ask a question, it is best to search for existing [issues](https://github.com/rai-opensource/proto2ros/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
 
 If you then still feel the need to ask a question and need clarification, we recommend the following:
 
-- Open an [issue](https://github.com/bdaiinstitute/proto2ros/issues/new).
+- Open an [issue](https://github.com/rai-opensource/proto2ros/issues/new).
 - Provide as much context as you can about what you're running into.
 - Provide project and platform versions (nodejs, npm, etc), depending on what seems relevant.
 
@@ -47,7 +47,7 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 
 - Make sure that you are using the latest version.
 - Determine if your bug is really a bug and not an error on your side. If you are looking for support, you might want to check [this section](#i-have-a-question)).
-- To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in the [bug tracker](https://github.com/bdaiinstitute/proto2ros/issues?q=label%3Abug).
+- To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in the [bug tracker](https://github.com/rai-opensource/proto2ros/issues?q=label%3Abug).
 - Collect information about the bug:
   - Stack trace (Traceback)
   - OS, ROS, Platform and Version (Windows, Linux, macOS, x86, ARM)
@@ -60,7 +60,7 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
 
-- Open an [issue](https://github.com/bdaiinstitute/proto2ros/issues/new).
+- Open an [issue](https://github.com/rai-opensource/proto2ros/issues/new).
 - Explain the behavior you would expect and the actual behavior.
 - Please provide as much context as possible and describe the *reproduction steps* that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.
 - Provide the information you collected in the previous section.
@@ -78,13 +78,13 @@ Once it's filed:
 
 - Make sure that you are using the latest version.
 - Read the documentation carefully and ensure the functionality is indeed missing.
-- Perform a [search](https://github.com/bdaiinstitute/proto2ros/issues) to see if the feature has already been requested. If it has, add a comment to the existing issue instead of opening a new one.
+- Perform a [search](https://github.com/rai-opensource/proto2ros/issues) to see if the feature has already been requested. If it has, add a comment to the existing issue instead of opening a new one.
 - Find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. If you're just targeting a minority of users, consider writing an add-on/plugin library.
 
 <!-- omit in toc -->
 #### How Do I Submit a Good Feature Request?
 
-Feature requests are tracked as [GitHub issues](https://github.com/bdaiinstitute/proto2ros/issues).
+Feature requests are tracked as [GitHub issues](https://github.com/rai-opensource/proto2ros/issues).
 
 - Use a **clear and descriptive title** for the issue to identify the suggestion.
 - Provide a **step-by-step description of the suggested enhancement** in as many details as possible.
