@@ -1,7 +1,7 @@
 # HTTP response message.
 
 # HTTP response status.
-proto2ros_tests/HTTPStatus status
+HTTPStatus status
 # HTTP response reason.
 string reason
 # HTTP response body.

@@ -1,3 +1,3 @@
 
-proto2ros_tests/CameraInfoDistortionModelType type
+CameraInfoDistortionModelType type
 float64[] coefficients

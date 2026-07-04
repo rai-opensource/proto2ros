@@ -11,10 +11,10 @@ float32 number
 # Text value.
 string text
 # Pair value.
-proto2ros_tests/Pair pair
+Pair pair
 # List value.
-proto2ros_tests/List list
+List list
 # Dict value.
-proto2ros_tests/Dict dict
+Dict dict
 int8 data_choice  # deprecated
 int8 which
