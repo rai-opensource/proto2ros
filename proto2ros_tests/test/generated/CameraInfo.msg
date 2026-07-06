@@ -8,10 +8,10 @@ uint8 DISTORTION_MODEL_FIELD_SET=32
 uint32 height
 uint32 width
 # Intrinsic matrix.
-proto2ros_tests/Matrix k
+Matrix k
 # Rectification matrix.
-proto2ros_tests/Matrix r
+Matrix r
 # Projection matrix.
-proto2ros_tests/Matrix p
-proto2ros_tests/CameraInfoDistortionModel distortion_model
+Matrix p
+CameraInfoDistortionModel distortion_model
 uint8 has_field 255

@@ -1,7 +1,7 @@
 # HTTP request message.
 
 # HTTP request method.
-proto2ros_tests/HTTPMethod method
+HTTPMethod method
 # HTTP resource URI.
 string uri
 # HTTP request body.

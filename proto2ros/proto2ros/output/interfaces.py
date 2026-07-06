@@ -41,6 +41,16 @@ def dump_message_specification(message_spec: MessageSpecification) -> str:
                 any_type = Type(str(field.type).replace(BaseType.__str__(field.type), "proto2ros/Any"))
                 field = Field(any_type, field.name)
             line = str(field)
+            # ROS IDL does not allow a package to fully qualify its own type
+            # references: `proto2ros/Value` must be written as `Value` when
+            # the field appears in a message that itself belongs to `proto2ros`.
+            # rosidl's type-description generator fails with a KeyError when it
+            # encounters a self-qualified reference.  Strip the prefix here so
+            # the emitted .msg files conform to the rosidl convention used by
+            # every other ROS package.
+            self_pkg = message_spec.base_type.pkg_name
+            if field.type.pkg_name == self_pkg:
+                line = line.replace(f"{self_pkg}/", "", 1)
             if qualifiers:
                 line += "  # " + ", ".join(qualifiers)
             output.append(line)
