@@ -52,7 +52,10 @@ function(proto2ros_generate target)
 
   set(BASE_PATH "${CMAKE_CURRENT_BINARY_DIR}/proto2ros_generate")
   set(OUTPUT_PATH "${BASE_PATH}/${ARG_PACKAGE_NAME}")
-  file(REMOVE_RECURSE "${OUTPUT_PATH}")
+  # NOTE Do not wipe OUTPUT_PATH here. Generated files are both build outputs
+  # and configure dependencies (via rosidl_generate_interfaces), so deleting and
+  # regenerating them can trigger an endless reconfigure loop. Orphaned files
+  # are pruned below, once the manifest is known.
   file(MAKE_DIRECTORY "${OUTPUT_PATH}")
 
   foreach(path ${ARG_PROTO_DESCRIPTORS})
@@ -139,6 +142,16 @@ function(proto2ros_generate target)
     )
   file(STRINGS "${OUTPUT_PATH}/manifest.txt" output_files)
   file(RENAME "${OUTPUT_PATH}/manifest.txt" "${OUTPUT_PATH}/manifest.orig.txt")
+
+  # Prune orphaned files left over from previous generations
+  set(_keep_files ${output_files}
+    "${OUTPUT_PATH}/manifest.txt" "${OUTPUT_PATH}/manifest.orig.txt")
+  file(GLOB_RECURSE _existing_files "${OUTPUT_PATH}/*")
+  foreach(_existing ${_existing_files})
+    if(NOT _existing IN_LIST _keep_files)
+      file(REMOVE "${_existing}")
+    endif()
+  endforeach()
 
   add_custom_command(
     OUTPUT ${output_files}

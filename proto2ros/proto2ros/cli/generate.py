@@ -26,6 +26,24 @@ from proto2ros.output.python import (
 )
 
 
+def write_text_if_changed(path: pathlib.Path, content: str) -> None:
+    """Write ``content`` to ``path`` only if it has changed.
+
+    Avoids bumping the file's modification time when the generated content is
+    unchanged. This is important because generated files, e.g. ``.msg``, are
+    both build outputs and CMake configure-time dependencies; rewriting them
+    unconditionally can cause an endless reconfigure loop.
+
+    """
+    if path.exists():
+        try:
+            if path.read_text() == content:
+                return
+        except (OSError, UnicodeDecodeError):
+            pass
+    path.write_text(content)
+
+
 def do_generate(args: argparse.Namespace) -> int:
     """Primary function to execute conversion of protobufs to ros msgs."""
     # Fetch baseline configuration.
@@ -101,7 +119,10 @@ def do_generate(args: argparse.Namespace) -> int:
     # Write message specifications to .py file.
     specifications_python_file = args.output_directory / "specifications.py"
     if not args.dry:
-        specifications_python_file.write_text(dump_specifications_python_module(message_specifications, config) + "\n")
+        write_text_if_changed(
+            specifications_python_file,
+            dump_specifications_python_module(message_specifications, config) + "\n",
+        )
     files_written.append(specifications_python_file)
 
     messages_output_directory = args.output_directory / "msg"
@@ -112,13 +133,14 @@ def do_generate(args: argparse.Namespace) -> int:
     for message_specification in message_specifications:
         message_output_file = which_message_specification(message_specification, messages_output_directory)
         if args.force_message_gen or not args.dry:
-            message_output_file.write_text(dump_message_specification(message_specification) + "\n")
+            write_text_if_changed(message_output_file, dump_message_specification(message_specification) + "\n")
         files_written.append(message_output_file)
 
     # Write Python conversion APIs .py file.
     conversions_python_file = args.output_directory / "conversions.py"
     if not args.dry:
-        conversions_python_file.write_text(
+        write_text_if_changed(
+            conversions_python_file,
             dump_conversions_python_module(message_specifications, known_message_specifications, config) + "\n",
         )
     files_written.append(conversions_python_file)
@@ -133,8 +155,8 @@ def do_generate(args: argparse.Namespace) -> int:
             known_message_specifications,
             config,
         )
-        conversions_hpp_file.write_text(hpp_content + "\n")
-        conversions_cpp_file.write_text(cpp_content + "\n")
+        write_text_if_changed(conversions_hpp_file, hpp_content + "\n")
+        write_text_if_changed(conversions_cpp_file, cpp_content + "\n")
     files_written.append(conversions_hpp_file)
     files_written.append(conversions_cpp_file)
 
